@@ -16,7 +16,7 @@
       min-height: 100vh;
     }
 
-    /* 3カラムレイアウト（PC用：比率 2.7 : 4.6 : 2.7） */
+    /* 3カラムレイアウト（PC用：比率 2.5 : 4.5 : 3.0） */
     .app-container {
       display: flex;
       gap: 15px;
@@ -24,9 +24,9 @@
       max-width: 1350px;
     }
 
-    /* 左側：目次エリア（比率 2.7） */
+    /* 左側：目次エリア（比率 2.5） */
     .sidebar-left {
-      flex: 2.7;
+      flex: 2.5;
       background: white;
       padding: 15px;
       border-radius: 12px;
@@ -53,7 +53,7 @@
       overflow-y: auto;
     }
 
-    /* Q1〜Q15目次項目の文字サイズを0.75倍に縮小 (0.825rem) */
+    /* Q1〜Q15目次項目の文字サイズ (0.825rem) */
     .toc-item {
       padding: 8px 10px;
       margin-bottom: 4px;
@@ -78,9 +78,9 @@
       font-weight: bold;
     }
 
-    /* 中央：メインコンテンツ（比率 4.6 / 上部の位置を揃えるため margin-top を削除） */
+    /* 中央：メインコンテンツ（比率 4.5） */
     .main-content {
-      flex: 4.6;
+      flex: 4.5;
       background: white;
       padding: 25px;
       border-radius: 12px;
@@ -163,9 +163,9 @@
     .btn-reset { background-color: #28a745; color: white; }
     .btn-reset:hover { background-color: #1e7e34; }
 
-    /* 右側：画像選択式プレビューエリア（比率 2.7） */
+    /* 右側：画像選択式プレビューエリア（比率 3.0） */
     .sidebar-right {
-      flex: 2.7;
+      flex: 3.0;
       background: white;
       padding: 15px;
       border-radius: 12px;
@@ -443,7 +443,7 @@
       if (activeToc) {
         activeToc.classList.add('active');
        
-        /* PC画面（幅1100px超）のときだけ目次を自動スクロールさせ、スマホのときは画面が勝手に動かないように固定 */
+        /* PC画面（幅1100px超）のときだけ目次を自動スクロール */
         if (window.innerWidth > 1100) {
           activeToc.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
@@ -454,6 +454,7 @@
       history.push(currentId);
       currentId = nextId;
       updateDisplay();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function jumpTo(targetId) {
@@ -461,6 +462,7 @@
         history.push(currentId);
         currentId = targetId;
         updateDisplay();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
@@ -468,6 +470,7 @@
       if (history.length > 0) {
         currentId = history.pop();
         updateDisplay();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
@@ -475,6 +478,7 @@
       currentId = 'Q1';
       history = [];
       updateDisplay();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // 画像切り替え処理
