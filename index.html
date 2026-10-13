@@ -174,7 +174,7 @@
       text-align: center;
     }
 
-    /* 「参考書類サンプル」の文字サイズ */
+    /* 「参考書類」の文字サイズ */
     .sidebar-right .sidebar-title {
       font-size: 1.4rem;
       font-weight: bold;
@@ -191,7 +191,7 @@
       margin-bottom: 15px;
     }
 
-    /* 「①ステッカー」「②青切符」「③納付書」の文字サイズ */
+    /* 「①納付書」「②青切符」「③ステッカー」の文字サイズ */
     .img-tab {
       flex: 1;
       padding: 12px 6px;
@@ -272,17 +272,17 @@
 
     <!-- 右：参考書類 選択式タブプレビュー -->
     <div class="sidebar-right">
-      <div class="sidebar-title">参考書類サンプル</div>
+      <div class="sidebar-title">参考書類</div>
      
-      <!-- 画像切替タブ -->
+      <!-- 画像切替タブ（①納付書、②青切符、③ステッカー） -->
       <div class="img-tab-container">
-        <div id="tab-sticker" class="img-tab active-tab" onclick="switchImage('sticker.jpg', 'tab-sticker')">① ステッカー</div>
+        <div id="tab-nofu" class="img-tab active-tab" onclick="switchImage('nofusho.jpg', 'tab-nofu')">① 納付書</div>
         <div id="tab-blue" class="img-tab" onclick="switchImage('blue_ticket.jpg', 'tab-blue')">② 青切符</div>
-        <div id="tab-nofu" class="img-tab" onclick="switchImage('nofusho.jpg', 'tab-nofu')">③ 納付書</div>
+        <div id="tab-sticker" class="img-tab" onclick="switchImage('sticker.jpg', 'tab-sticker')">③ ステッカー</div>
       </div>
 
-      <!-- 表示用画像 -->
-      <img id="documentPreview" class="preview-image" src="sticker.jpg" alt="書類サンプル">
+      <!-- 表示用画像（初期表示は納付書） -->
+      <img id="documentPreview" class="preview-image" src="nofusho.jpg" alt="書類サンプル">
     </div>
 
   </div>
