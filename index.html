@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>放置駐車対応フローチャート</title>
+  <title>放置違反金・出頭対応フローチャート</title>
   <style>
     body {
       font-family: sans-serif;
@@ -16,7 +16,7 @@
       min-height: 100vh;
     }
 
-    /* 3カラムレイアウト（PC用） */
+    /* 3カラムレイアウト（PC用：比率 2.7 : 4.6 : 2.7） */
     .app-container {
       display: flex;
       gap: 15px;
@@ -24,18 +24,19 @@
       max-width: 1350px;
     }
 
-    /* 左側：目次エリア */
+    /* 左側：目次エリア（比率 2.7） */
     .sidebar-left {
-      width: 200px;
+      flex: 2.7;
       background: white;
       padding: 15px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      flex-shrink: 0;
+      box-sizing: border-box;
     }
 
+    /* 設問一覧タイトル */
     .sidebar-title {
-      font-size: 1.0rem;
+      font-size: 1.2rem;
       font-weight: bold;
       color: #2c3e50;
       margin-top: 0;
@@ -52,10 +53,11 @@
       overflow-y: auto;
     }
 
+    /* Q1〜Q15目次項目の文字サイズを0.75倍に縮小 (0.825rem) */
     .toc-item {
       padding: 8px 10px;
       margin-bottom: 4px;
-      font-size: 1.0rem;
+      font-size: 0.825rem;
       border-radius: 6px;
       cursor: pointer;
       color: #555;
@@ -76,18 +78,19 @@
       font-weight: bold;
     }
 
-    /* 中央：メインコンテンツ */
+    /* 中央：メインコンテンツ（比率 4.6 / 上部の位置を揃えるため margin-top を削除） */
     .main-content {
-      flex-grow: 1;
+      flex: 4.6;
       background: white;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin-top: 40px;
+      box-sizing: border-box;
     }
 
+    /* メインタイトルの文字サイズ */
     .main-title {
-      font-size: 1.9rem;
+      font-size: 1.625rem;
       color: #2c3e50;
       margin-top: 0;
       margin-bottom: 20px;
@@ -98,7 +101,7 @@
 
     /* 質問文の文字サイズ */
     .text-box {
-      font-size: 2.0rem;
+      font-size: 1.35rem;
       line-height: 1.4;
       font-weight: bold;
       color: #333;
@@ -119,12 +122,12 @@
       flex-wrap: wrap;
     }
 
-    /* 選択肢ボタン */
+    /* 選択肢ボタン（はい・いいえなど） */
     button {
-      font-size: 1.35rem;
-      padding: 30px 55px;
+      font-size: 1.375rem;
+      padding: 15px 30px;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.2s, opacity 0.2s;
     }
@@ -148,10 +151,10 @@
       justify-content: space-between;
     }
 
-    /* 「1つ前に戻る」「最初に戻る」の文字サイズ (2.25rem) */
+    /* 「1つ前に戻る」「最初に戻る」 */
     .nav-container button {
-      font-size: 1.5rem;
-      padding: 20px 35px;
+      font-size: 1.125rem;
+      padding: 12px 20px;
     }
 
     .btn-back { background-color: #ffc107; color: #212529; }
@@ -160,20 +163,20 @@
     .btn-reset { background-color: #28a745; color: white; }
     .btn-reset:hover { background-color: #1e7e34; }
 
-    /* 右側：画像選択式プレビューエリア */
+    /* 右側：画像選択式プレビューエリア（比率 2.7） */
     .sidebar-right {
-      width: 350px;
+      flex: 2.7;
       background: white;
       padding: 15px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      flex-shrink: 0;
+      box-sizing: border-box;
       text-align: center;
     }
 
-    /* 「参考書類サンプル」の文字 (1.9rem) */
+    /* 「参考書類サンプル」の文字サイズ */
     .sidebar-right .sidebar-title {
-      font-size: 1.9rem;
+      font-size: 1.4rem;
       font-weight: bold;
       color: #2c3e50;
       margin-top: 0;
@@ -188,7 +191,7 @@
       margin-bottom: 15px;
     }
 
-    /* 「①ステッカー」「②青切符」「③納付書」の文字 */
+    /* 「①ステッカー」「②青切符」「③納付書」の文字サイズ */
     .img-tab {
       flex: 1;
       padding: 12px 6px;
@@ -227,22 +230,18 @@
       /* 1番上にしたい：質問（メインコンテンツ） */
       .main-content {
         width: 100%;
-        box-sizing: border-box;
         order: 1;
-        margin-top: 0;
       }
 
       /* 2番目にしたい：サンプル画像 */
       .sidebar-right {
         width: 100%;
-        box-sizing: border-box;
         order: 2;
       }
 
       /* 3番目（一番下）にしたい：目次 */
       .sidebar-left {
         width: 100%;
-        box-sizing: border-box;
         order: 3;
       }
     }
@@ -260,7 +259,7 @@
 
     <!-- 中央：メイン画面 -->
     <div class="main-content">
-      <h1 class="main-title">放置駐車 対応フローチャート</h1>
+      <h1 class="main-title">放置駐車対応フローチャート</h1>
 
       <div id="displayText" class="text-box">読み込み中...</div>
       <div id="actionButtons" class="btn-container"></div>
@@ -299,52 +298,52 @@
         ]
       },
       Q2: {
-        title: "Q2. 車両返却までの支払い可否",
-        text: "Q2 返却までに納付書による支払いを済ませていただくようご案内してください。(支払いは平日のみ、郵便局/銀行、貼り付けより8日以内です",
+        title: "Q2. 8日以内支払いの可否",
+        text: "Q2 返却までに納付書による支払いを済ませて頂くようご案内してください(支払いは平日のみ、郵便局/銀行、貼り付けより8日以内)",
         options: [
-          { label: "支払い可能", next: "Q3" },
+          { label: "はい", next: "Q3" },
           { label: "土日祝のため支払い不可", next: "Q7" }
         ]
       },
       Q3: {
         title: "Q3. 領収書コピー提示",
-        text: "Q3 車両返却時、青切符と反則金を納付した領収書のコピーをいただく旨お伝えください。",
+        text: "Q3 返却時、青切符と納付済み領収書のコピーをいただく旨お伝えください。",
         options: [
-          { label: "終了＿社内処理へ移る", next: "Q4" },
-          { label: "コピー不可＿紛失など", next: "Q8" }
+          { label: "終了_社内処理へ移る", next: "Q4" },
+          { label: "紛失など", next: "Q8" }
         ]
       },
       Q4: {
         title: "Q4. オペメモ入力",
-        text: "Q4 オペメモ欄へ「ﾁｭｳｷﾝ_ﾘｮｳｼｭｳｼｮｺﾋﾟｰ ｱﾝﾅｲｽﾞﾐ」など誰が見てもわかる内容を意識して入力",
+        text: "Q4 オペメモ欄へ[チュウキン_リョウシュウショコピーアンナイズミ]など誰が見てもわかるよう意識して入力してください。",
         options: [
           { label: "帰着処理・社内処理へ移る", next: "Q5" }
         ]
       },
       Q5: {
-        title: "Q5. 青切符＆領収書コピー",
-        text: "Q5 青切符と反則金を納付した際の領収書のコピーをとり原本はお客様へお返ししてください。お客様対応終了。\n\n社内処理：青切符と領収書のコピーと報告書を記入後、担当部署へ報告し終了",
+        title: "Q5. 青切符・領収書コピー",
+        text: "Q5青切符と反則金を納付した際の領収書のコピーをとり、原本はお客様へお返ししてください。お客様対応終了。\n\n社内処理_青切符と領収書のコピーと報告書を記入後、担当部署へ報告し終了。",
         options: []
       },
       Q6: {
-        title: "Q6. 警察署への出頭確認",
-        text: "Q6 ステッカー記載の警察署(交通課)へ出頭して、青切符と納付書の交付を受けるようご案内してください",
+        title: "Q6. 出頭受入れの確認",
+        text: "Q6ステッカー記載の警察署へ(交通課)出頭して、青切符と納付書の交付を受けていただくようご案内してください。",
         options: [
-          { label: "出頭可能", next: "Q2" },
-          { label: "出頭不可・拒否", next: "Q9" }
+          { label: "はい", next: "Q2" },
+          { label: "いいえ", next: "Q9" }
         ]
       },
       Q7: {
         title: "Q7. 代行納付の利用確認",
-        text: "Q7 お客様より納付書と違反金をお預かりし、NR による代行納付の利用も可能です。利用するか確認してください",
+        text: "Q7お客様より納付書と違反金をお預かりして、NRによる代行納付の利用も可能です。利用するか確認してください。",
         options: [
           { label: "利用する", next: "Q10" },
           { label: "利用しない・できない", next: "Q8" }
         ]
       },
       Q8: {
-        title: "Q8. 支払い未確認時の預り金案内",
-        text: "Q8 ご返却までに反則金の支払い確認が取れない場合は、車両返却時に青切符のコピーとお預かり金 25,000 円を預からせていただく旨ご案内してください。後日お客様が反則金の納付を期限内に済ませ領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります",
+        title: "Q8. 未確認時の預り金案内",
+        text: "Q8ご返却までに反則金の支払い確認が取れない場合は、車両返却時に青切符のコピーとお預かり金25,000円を預からせていただく旨をご案内ください。\n後日お客様が反則金の納付を、期限内に済ませて領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります。",
         options: [
           { label: "預り金_了承", next: "Q11" },
           { label: "預り金_不可", next: "Q12" }
@@ -352,7 +351,7 @@
       },
       Q9: {
         title: "Q9. 未出頭時の預り金案内",
-        text: "Q9 車両返却までに警察署への出頭ができない場合は、お預かり金として 25,000 円を預からせていただく旨ご案内をしてください。後日お客様が反則金の納付を期限内に済ませ領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります",
+        text: "Q9車両返却までに警察署への出頭ができない場合は、お預かり金として25,000円を預からせていただく旨をご案内してください。\n後日お客様が反則金の納付を、期限内に済ませて領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります。",
         options: [
           { label: "預り金_了承", next: "Q11" },
           { label: "預り金_不可", next: "Q12" }
@@ -360,38 +359,38 @@
       },
       Q10: {
         title: "Q10. 代行納付の手続き",
-        text: "Q10 納付書へお客様の氏名・住所等記入していただいてください。青切符と合わせてコピーをとります。青切符の原本はお客様へお返ししてください。反則金の額面金額をお預かりします。後日 NR 側で代行納付が完了次第お客様のご住所へ領収書を送付する旨伝えてください。対応終了。",
+        text: "Q10納付書へお客様の氏名、住所等を記入していただいてください。青切符と合わせてコピーを取ります。青切符の原本はお客様へお返ししてください。反則金の額面金額をお預かりします。後日NRによる代行納付が完了次第お客様のご住所へ領収書を送付する旨伝えてください。",
         options: [
           { label: "社内処理へ進む", next: "Q13" }
         ]
       },
       Q11: {
         title: "Q11. 預り金了承時の処理",
-        text: "Q11 お預かり金 25,000 円とお預かり書類を記入しコピーをとる。控えとしてお客様へ原本を渡してください。後日お客様が反則金の納付を期限内に済ませ領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります",
+        text: "Q11お預かり金25,000円とお預かり書類を記入しコピーをとります。お客様控えとして原本をお渡しください。\n後日お客様が反則金の納付を、期限内に済ませて領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります。",
         options: [
           { label: "社内処理へ進む", next: "Q14" }
         ]
       },
       Q12: {
         title: "Q12. 預り金不可時の念書作成",
-        text: "Q12 返却までに警察への出頭及び預り金の支払いが不可能な場合は、念書を記入しコピーをお客様へ渡してください。後日お客様が反則金の納付を期限内に済ませ領収書等をNRにご提示いただき(FAX/郵送等)確認が取れ次第、速やかに返金処理へ移ります",
+        text: "Q12返却までに警察署への出頭及び預かり金の支払いが不可能な場合は、念書を記入してコピーをお客様控えとしてお渡しください。",
         options: [
           { label: "社内処理へ進む", next: "Q15" }
         ]
       },
       Q13: {
-        title: "Q13. 代行納付完了後の処理",
-        text: "Q13 代行納付完了後は領収書のコピーをとり、原本はお客様へ郵送。コピーを担当部署へ報告して終了。",
+        title: "Q13. 代行納付完了後処理",
+        text: "Q13代行納付完了後は領収書のコピーを取り原本はお客様へ速やかに郵送してください。コピーを担当部署へ報告して終了。",
         options: []
       },
       Q14: {
         title: "Q14. 返金処理連携",
-        text: "Q14 支払い確認が取れ次第、担当部署と連携し速やかに返金処理へ移ってください。必要であれば担当部署へ振込処理を引き継いだ旨お客様へお伝えし、一週間経過しても入金にならなければご連絡をいただくよう伝えてください",
+        text: "Q14支払い確認が取れ次第、担当部署と連携して速やかに返金処理へ移ってください。必要であれば担当部署へ振込処理を引き継いだ旨をお客様へお伝えし1週間経過しても入金の確認が取れない場合はお電話をいただくようご案内してください。",
         options: []
       },
       Q15: {
         title: "Q15. 未払い対応指示",
-        text: "Q15 支払期日までに支払いがない場合は担当部署と連携し確認の連絡など適宜対応してください。",
+        text: "Q15支払い期日までに確認が取れない場合は担当部署と連携してお客様への連絡等、適宜対応してください。",
         options: []
       }
     };
@@ -432,7 +431,7 @@
         const completeMsg = document.createElement('div');
         completeMsg.style.color = '#28a745';
         completeMsg.style.fontWeight = 'bold';
-        completeMsg.style.fontSize = '1.8rem';
+        completeMsg.style.fontSize = '1.5rem';
         completeMsg.innerText = '【このルートの対応フローは以上です】';
         actionButtons.appendChild(completeMsg);
       }
@@ -443,7 +442,11 @@
       const activeToc = document.getElementById('toc-' + currentId);
       if (activeToc) {
         activeToc.classList.add('active');
-        activeToc.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+       
+        /* PC画面（幅1100px超）のときだけ目次を自動スクロールさせ、スマホのときは画面が勝手に動かないように固定 */
+        if (window.innerWidth > 1100) {
+          activeToc.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
       }
     }
 
