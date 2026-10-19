@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>放置違反金・出頭対応フローチャート</title>
+  <title>放置駐車対応フローチャート</title>
   <style>
     body {
       font-family: sans-serif;
@@ -99,7 +99,7 @@
       text-align: center;
     }
 
-    /* メイン質問文の文字サイズ */
+    /* メイン質問文の文字サイズ（PC用：1.62rem） */
     .text-box {
       font-size: 1.62rem;
       line-height: 1.4;
@@ -220,7 +220,7 @@
     }
 
     /* ==========================================================
-       スマートフォン表示時（画面幅1100px以下）のレイアウト・順番調整
+       スマートフォン表示時（画面幅1100px以下）のレイアウト・サイズ調整
        ========================================================== */
     @media (max-width: 1100px) {
       .app-container {
@@ -231,6 +231,12 @@
       .main-content {
         width: 100%;
         order: 1;
+      }
+
+      /* スマホ表示時の質問文：文字サイズ1.5倍（2.43rem）、縦幅（min-height）も1.5倍に確保しつつ文字数で自動拡張 */
+      .text-box {
+        font-size: 2.43rem;
+        min-height: 6em;
       }
 
       /* 2番目にしたい：サンプル画像 */
