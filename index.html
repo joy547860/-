@@ -16,7 +16,7 @@
       min-height: 100vh;
     }
 
-    /* 3カラムレイアウト（PC用：比率 2.5 : 4.5 : 3.0） */
+    /* 3カラムレイアウト（PC用：比率 1.8 : 5.2 : 3.0） */
     .app-container {
       display: flex;
       gap: 15px;
@@ -24,9 +24,9 @@
       max-width: 1350px;
     }
 
-    /* 左側：目次エリア（比率 2.5） */
+    /* 左側：目次エリア（幅を0.75倍の比率 1.8 に縮小） */
     .sidebar-left {
-      flex: 2.5;
+      flex: 1.8;
       background: white;
       padding: 15px;
       border-radius: 12px;
@@ -78,9 +78,9 @@
       font-weight: bold;
     }
 
-    /* 中央：メインコンテンツ（比率 4.5） */
+    /* 中央：メインコンテンツ（広げた分 比率 5.2 へ拡大） */
     .main-content {
-      flex: 4.5;
+      flex: 5.2;
       background: white;
       padding: 25px;
       border-radius: 12px;
@@ -99,9 +99,9 @@
       text-align: center;
     }
 
-    /* 質問文の文字サイズ */
+    /* メイン質問文の文字サイズ */
     .text-box {
-      font-size: 1.35rem;
+      font-size: 1.62rem;
       line-height: 1.4;
       font-weight: bold;
       color: #333;
@@ -122,10 +122,10 @@
       flex-wrap: wrap;
     }
 
-    /* 選択肢ボタン（はい・いいえなど） */
+    /* 選択肢ボタン（はい・いいえなど）の文字サイズ (1.65rem) */
     button {
-      font-size: 1.375rem;
-      padding: 15px 30px;
+      font-size: 1.65rem;
+      padding: 16px 32px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
@@ -151,10 +151,10 @@
       justify-content: space-between;
     }
 
-    /* 「1つ前に戻る」「最初に戻る」 */
+    /* 「1つ前に戻る」「最初に戻る」の文字サイズを0.75倍に縮小 (1.24rem) */
     .nav-container button {
-      font-size: 1.125rem;
-      padding: 12px 20px;
+      font-size: 1.24rem;
+      padding: 12px 24px;
     }
 
     .btn-back { background-color: #ffc107; color: #212529; }
