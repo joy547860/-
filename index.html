@@ -24,7 +24,7 @@
       max-width: 1350px;
     }
 
-    /* 左側：目次エリア（幅を0.75倍の比率 1.8 に縮小） */
+    /* 左側：目次エリア（比率 1.8） */
     .sidebar-left {
       flex: 1.8;
       background: white;
@@ -78,7 +78,7 @@
       font-weight: bold;
     }
 
-    /* 中央：メインコンテンツ（広げた分 比率 5.2 へ拡大） */
+    /* 中央：メインコンテンツ（比率 5.2） */
     .main-content {
       flex: 5.2;
       background: white;
@@ -151,7 +151,7 @@
       justify-content: space-between;
     }
 
-    /* 「1つ前に戻る」「最初に戻る」の文字サイズを0.75倍に縮小 (1.24rem) */
+    /* 「1つ前に戻る」「最初に戻る」 (1.24rem) */
     .nav-container button {
       font-size: 1.24rem;
       padding: 12px 24px;
@@ -233,9 +233,9 @@
         order: 1;
       }
 
-      /* スマホ表示時の質問文：文字サイズ1.5倍（2.43rem）、縦幅（min-height）も1.5倍に確保しつつ文字数で自動拡張 */
+      /* ★スマホ表示時だけ、質問文の文字サイズを1.2倍（1.944rem）に設定 */
       .text-box {
-        font-size: 2.43rem;
+        font-size: 1.944rem;
         min-height: 6em;
       }
 
