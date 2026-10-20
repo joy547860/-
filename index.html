@@ -88,11 +88,13 @@
       box-sizing: border-box;
     }
 
-    /* メインタイトル（太字の赤色） */
+    /* ★メインタイトル（PC・スマホ共通：中が黄色・フチが黒の袋文字） */
     .main-title {
       font-size: 2.4375rem;
       font-weight: bold;
-      color: #dc3545;
+      color: #ffeb3b;
+      -webkit-text-stroke: 1.2px #000;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #dc3545;
@@ -175,11 +177,13 @@
       text-align: center;
     }
 
-    /* 「参考書類」の文字サイズ */
+    /* ★「参考サンプル」タイトル（PC・スマホ共通：メインタイトルと同じサイズ・中黄色・フチ黒） */
     .sidebar-right .sidebar-title {
-      font-size: 1.4rem;
+      font-size: 2.4375rem;
       font-weight: bold;
-      color: #2c3e50;
+      color: #ffeb3b;
+      -webkit-text-stroke: 1.2px #000;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
       margin-top: 0;
       margin-bottom: 15px;
       padding-bottom: 8px;
@@ -192,14 +196,14 @@
       margin-bottom: 15px;
     }
 
-    /* 「①納付書」「②青切符」「③ステッカー」の文字サイズ */
+    /* 「1納付書」「2青切符」「3ステッカー」タブ：文字サイズ1.5倍(1.5rem)、太字の黒色 */
     .img-tab {
       flex: 1;
       padding: 12px 6px;
-      font-size: 1.0rem;
+      font-size: 1.5rem;
       font-weight: bold;
       background-color: #e9ecef;
-      color: #495057;
+      color: #000000;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s;
@@ -221,7 +225,7 @@
     }
 
     /* ==========================================================
-       スマートフォン表示時（画面幅1100px以下）のレイアウト・サイズ調整
+       スマートフォン表示時（画面幅1100px以下）のレイアウト調整
        ========================================================== */
     @media (max-width: 1100px) {
       .app-container {
@@ -234,13 +238,13 @@
         order: 1;
       }
 
-      /* ★スマホ表示時のみ、質問文の文字サイズをさらに1.25倍（3.125rem）へ拡大 */
+      /* スマホ表示時の質問文：大きいサイズ (3.125rem) */
       .text-box {
         font-size: 3.125rem;
         min-height: 6em;
       }
 
-      /* 2番目にしたい：サンプル画像 */
+      /* 2番目にしたい：サンプル画像エリア */
       .sidebar-right {
         width: 100%;
         order: 2;
@@ -277,15 +281,15 @@
       </div>
     </div>
 
-    <!-- 右：参考書類 選択式タブプレビュー -->
+    <!-- 右：参考サンプル 選択式タブプレビュー -->
     <div class="sidebar-right">
-      <div class="sidebar-title">参考書類</div>
+      <div class="sidebar-title">参考サンプル</div>
      
-      <!-- 画像切替タブ（①納付書、②青切符、③ステッカー） -->
+      <!-- 画像切替タブ（1納付書、2青切符、3ステッカー） -->
       <div class="img-tab-container">
-        <div id="tab-nofu" class="img-tab active-tab" onclick="switchImage('nofusho.jpg', 'tab-nofu')">① 納付書</div>
-        <div id="tab-blue" class="img-tab" onclick="switchImage('blue_ticket.jpg', 'tab-blue')">② 青切符</div>
-        <div id="tab-sticker" class="img-tab" onclick="switchImage('sticker.jpg', 'tab-sticker')">③ ステッカー</div>
+        <div id="tab-nofu" class="img-tab active-tab" onclick="switchImage('nofusho.jpg', 'tab-nofu')">1納付書</div>
+        <div id="tab-blue" class="img-tab" onclick="switchImage('blue_ticket.jpg', 'tab-blue')">2青切符</div>
+        <div id="tab-sticker" class="img-tab" onclick="switchImage('sticker.jpg', 'tab-sticker')">3ステッカー</div>
       </div>
 
       <!-- 表示用画像（初期表示は納付書） -->
