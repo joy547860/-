@@ -88,13 +88,14 @@
       box-sizing: border-box;
     }
 
-    /* ★メインタイトル（PC・スマホ共通：中が黄色・フチが黒の袋文字） */
+    /* ★メインタイトル（綺麗な黄色と滑らかな黒枠） */
     .main-title {
       font-size: 2.4375rem;
-      font-weight: bold;
+      font-weight: 900;
       color: #ffeb3b;
-      -webkit-text-stroke: 1.2px #000;
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+      -webkit-text-stroke: 1.5px #000000;
+      paint-order: stroke fill;
+      text-shadow: none;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #dc3545;
@@ -177,13 +178,14 @@
       text-align: center;
     }
 
-    /* ★「参考サンプル」タイトル（PC・スマホ共通：メインタイトルと同じサイズ・中黄色・フチ黒） */
+    /* ★「参考画像サンプル」タイトル（綺麗な黄色と滑らかな黒枠） */
     .sidebar-right .sidebar-title {
       font-size: 2.4375rem;
-      font-weight: bold;
+      font-weight: 900;
       color: #ffeb3b;
-      -webkit-text-stroke: 1.2px #000;
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+      -webkit-text-stroke: 1.5px #000000;
+      paint-order: stroke fill;
+      text-shadow: none;
       margin-top: 0;
       margin-bottom: 15px;
       padding-bottom: 8px;
@@ -196,11 +198,11 @@
       margin-bottom: 15px;
     }
 
-    /* 「1納付書」「2青切符」「3ステッカー」タブ：文字サイズ1.5倍(1.5rem)、太字の黒色 */
+    /* ★PCでの「1納付書」「2青切符」「3ステッカー」タブ（0.5倍の 0.75rem に縮小） */
     .img-tab {
       flex: 1;
-      padding: 12px 6px;
-      font-size: 1.5rem;
+      padding: 8px 4px;
+      font-size: 0.75rem;
       font-weight: bold;
       background-color: #e9ecef;
       color: #000000;
@@ -225,7 +227,7 @@
     }
 
     /* ==========================================================
-       スマートフォン表示時（画面幅1100px以下）のレイアウト調整
+       スマートフォン表示時（画面幅1100px以下）のレイアウト・サイズ調整
        ========================================================== */
     @media (max-width: 1100px) {
       .app-container {
@@ -248,6 +250,12 @@
       .sidebar-right {
         width: 100%;
         order: 2;
+      }
+
+      /* スマホ表示時のみ：「1納付書」「2青切符」「3ステッカー」の文字サイズを大きめ（1.5rem）に戻す */
+      .img-tab {
+        font-size: 1.5rem;
+        padding: 12px 6px;
       }
 
       /* 3番目（一番下）にしたい：目次 */
@@ -281,9 +289,9 @@
       </div>
     </div>
 
-    <!-- 右：参考サンプル 選択式タブプレビュー -->
+    <!-- 右：参考画像サンプル 選択式タブプレビュー -->
     <div class="sidebar-right">
-      <div class="sidebar-title">参考サンプル</div>
+      <div class="sidebar-title">参考画像サンプル</div>
      
       <!-- 画像切替タブ（1納付書、2青切符、3ステッカー） -->
       <div class="img-tab-container">
